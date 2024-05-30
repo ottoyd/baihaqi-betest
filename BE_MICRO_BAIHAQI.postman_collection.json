@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "6db9e5b0-1c53-40c0-8aa3-7546449c9309",
+		"name": "BE MICRO BAIHAQI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11218257"
+	},
+	"item": [
+		{
+			"name": "GENERATE JWT",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/service/getToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"service",
+						"getToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ALL USER",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbmZvIjoiYmFpaGFxaSIsImlhdCI6MTcxMjQ0NTY0M30.nPhYtOFfg0T-376ppy1DF1XlUjBF_pMdzrSW1yq9mh0"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/allUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"allUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BY ACCOUND NO",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbmZvIjoiYmFpaGFxaSIsImlhdCI6MTcxMjQ0NTY0M30.nPhYtOFfg0T-376ppy1DF1XlUjBF_pMdzrSW1yq9mh0"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/userByAccountNum/Ottoyd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"userByAccountNum",
+						"Ottoyd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET BY ID NO",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbmZvIjoiYmFpaGFxaSIsImlhdCI6MTcxMjQ0Njg2Nn0.eg1pKAXKE0ZA_D8ZMYXqrGgyUBRttDlWeAck1rEtqho"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\":\"Ottoyd222\",\n  \"accountNumber\":\"Ottoyd\",\n  \"emailAddress\":\"Ottoyd@mail.com\",\n  \"identityNumber\":\"Ottoyd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/userByIdentityNum/Ottoyd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"userByIdentityNum",
+						"Ottoyd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD USER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbmZvIjoiYmFpaGFxaSIsImlhdCI6MTcxMjQ0NzEwM30.cbDl5tASKf_blzHPQgZOaovntvLB-oA3j2ysXdohKyw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\":\"abi\",\n  \"accountNumber\":\"abi\",\n  \"identityNumber\":\"abi\",\n  \"emailAddress\":\"Ottoyd@mail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDIT USER",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbmZvIjoiYmFpaGFxaSIsImlhdCI6MTcxMjQ2MjcwOH0.edkGGr_LhwONqM2U6e0Fp45rhsv_exkLSa61RCx6eY0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\":\"Ottoyd222\",\n  \"accountNumber\":\"Ottoyd11111\",\n  \"identityNumber\":\"Ottoyd1111222\",\n  \"emailAddress\":\"Ottoyd@mail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/edit/66121b46910806f81fa84695",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"edit",
+						"66121b46910806f81fa84695"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE USER",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbmZvIjoiYmFpaGFxaSIsImlhdCI6MTcxMjQ0NTY0M30.nPhYtOFfg0T-376ppy1DF1XlUjBF_pMdzrSW1yq9mh0"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/user/delete/66121b46910806f81fa84695",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"delete",
+						"66121b46910806f81fa84695"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
