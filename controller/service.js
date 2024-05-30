@@ -9,6 +9,7 @@ const generateToken = async (req, res, next) => {
 
         const token = jwtTokenSign(payload, process.env.JWT_SECRET);
 
+        console.log('generateToken, sukses');
         return res.status(200).json({ data: token })
     } catch (error) {
         next(error)

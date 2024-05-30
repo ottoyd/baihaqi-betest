@@ -1,7 +1,5 @@
 async function main() {
     require('dotenv').config()
-    await require('./../libs/mongo').connect()
-    await require('./../libs/redis').connect()
 
     let app = require('./../index')
     let http = require('http')

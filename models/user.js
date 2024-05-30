@@ -1,4 +1,3 @@
-const userCollection = require('./../libs/mongo').mongoInstance("user")
 const { ObjectId } = require('mongodb');
 const Err = require('./../libs/err')
 
@@ -11,8 +10,9 @@ class User {
         this.emailAddress = emailAddress.trim()
     }
 
-    static async getAll() {
+    static async getAll(db) {
         try {
+            const userCollection = db.collection("users")
             let result = []
             const users = await userCollection.find({}).toArray()
             for (const u of users) result.push(new User(u._id, u.userName, u.accountNumber, u.emailAddress, u.identityNumber));
@@ -22,8 +22,9 @@ class User {
         }
     }
 
-    static async getByAccountNum(num) {
+    static async getByAccountNum(num, db) {
         try {
+            const userCollection = db.collection("users")
             if (!num) throw new Err('Invalid Paramenter', 400)
             const user = await userCollection.findOne({ accountNumber: num })
             if (!user) throw new Err('User Not Found', 404)
@@ -33,8 +34,9 @@ class User {
         }
     }
 
-    static async getIdentityNum(num) {
+    static async getIdentityNum(num, db) {
         try {
+            const userCollection = db.collection("users")
             if (!num) throw new Err('Invalid Paramenter', 400)
             const user = await userCollection.findOne({ identityNumber: num })
             if (!user) throw new Err('User Not Found', 404)
@@ -44,9 +46,9 @@ class User {
         }
     }
 
-    static async create(data) {
+    static async create(data, db) {
         try {
-
+            const userCollection = db.collection("users")
             const { userName, accountNumber, identityNumber, emailAddress } = data;
 
             if (!userName) throw new Err('userName Is Required', 400)
@@ -81,8 +83,10 @@ class User {
         }
     }
 
-    static async edit(data, id) {
+    static async edit(data, id, db) {
         try {
+
+            const userCollection = db.collection("users")
 
             const { userName, accountNumber, identityNumber, emailAddress } = data;
 
@@ -109,13 +113,27 @@ class User {
         }
     }
 
-    static async delete(id) {
+    static async delete(id, db) {
         try {
-
+            const userCollection = db.collection("users")
             const thisUser = await userCollection.findOne({ _id: new ObjectId(id) });
             if (!thisUser) throw new Err('User Not Found', 404)
 
             await userCollection.deleteOne({ _id: new ObjectId(id) })
+            return thisUser
+
+        } catch (error) {
+            throw error
+        }
+    }
+
+    static async deleteTest(userName, db) {
+        try {
+            const userCollection = db.collection("users")
+            const thisUser = await userCollection.findOne({ userName: userName });
+            if (!thisUser) throw new Err('User Not Found', 404)
+
+            await userCollection.deleteOne({ userName: userName })
             return thisUser
 
         } catch (error) {

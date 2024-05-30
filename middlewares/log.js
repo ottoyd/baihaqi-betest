@@ -1,9 +1,9 @@
-const logCollection = require('./../libs/mongo').mongoInstance("log")
-
 async function log(req, res, next) {
+    const logCollection = req.db.collection("log")
+    const isTest = process.argv.includes("TEST")
     try {
         await logCollection.insertOne({
-            status: 'Normal',
+            status: isTest ? 'TEST_Normal' : 'Normal',
             notes: '-',
             src: req.ip,
             endpoint: req.originalUrl,
@@ -12,7 +12,7 @@ async function log(req, res, next) {
         next()
     } catch (err) {
         await logCollection.insertOne({
-            status: 'Error',
+            status: isTest ? 'TEST_Error' : 'Error',
             notes: err,
             src: req.ip,
             endpoint: req.originalUrl,
